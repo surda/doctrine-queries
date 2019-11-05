@@ -3,6 +3,7 @@
 namespace Surda\Doctrine\Queries;
 
 use Doctrine\ORM;
+use Exception;
 use Surda\Doctrine\Queries\Exception\QueryException;
 
 class EntityRepository extends ORM\EntityRepository implements IQueryable
@@ -28,17 +29,17 @@ class EntityRepository extends ORM\EntityRepository implements IQueryable
         try {
             return $queryObject->fetch($this);
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             throw $this->handleQueryException($e, $queryObject);
         }
     }
 
     /**
-     * @param \Exception $e
-     * @param IQuery     $queryObject
+     * @param Exception $e
+     * @param IQuery    $queryObject
      * @return QueryException
      */
-    private function handleQueryException(\Exception $e, IQuery $queryObject): QueryException
+    private function handleQueryException(Exception $e, IQuery $queryObject): QueryException
     {
         $lastQuery = $queryObject instanceof QueryObject ? $queryObject->getLastQuery() : NULL;
 

@@ -3,11 +3,11 @@
 namespace Surda\Doctrine\Queries;
 
 use Doctrine\ORM;
+use Iterator;
 use Nette\SmartObject;
-use Surda\Doctrine\Queries\Exception\UnexpectedValueException;
 
 /**
- * @method onPostFetch(QueryObject $param, IQueryable $repository, \Iterator $iterator)
+ * @method onPostFetch(QueryObject $param, IQueryable $repository, Iterator $iterator)
  */
 abstract class QueryObject implements IQuery
 {
@@ -50,7 +50,6 @@ abstract class QueryObject implements IQuery
     /**
      * @param IQueryable $repository
      * @return ORM\Query
-     * @throws UnexpectedValueException
      */
     private function getQuery(IQueryable $repository): ORM\Query
     {
@@ -91,10 +90,10 @@ abstract class QueryObject implements IQuery
 
     /**
      * @param IQueryable $repository
-     * @param \Iterator  $iterator
+     * @param Iterator   $iterator
      * @return void
      */
-    public function postFetch(IQueryable $repository, \Iterator $iterator): void
+    public function postFetch(IQueryable $repository, Iterator $iterator): void
     {
         $this->onPostFetch($this, $repository, $iterator);
     }

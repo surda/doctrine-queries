@@ -3,14 +3,15 @@
 namespace Surda\Doctrine\Queries;
 
 use ArrayIterator;
+use Countable;
 use Doctrine\ORM;
 use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
+use IteratorAggregate;
 use Nette\SmartObject;
 use Nette\Utils\Paginator as NettePaginator;
-use Surda\Doctrine\Queries\Exception\InvalidStateException;
 use Surda\Doctrine\Queries\Exception\QueryException;
 
-class ResultSet implements \Countable, \IteratorAggregate
+class ResultSet implements Countable, IteratorAggregate
 {
     use SmartObject;
 
@@ -51,7 +52,6 @@ class ResultSet implements \Countable, \IteratorAggregate
      * @param int $offset
      * @param int $limit
      * @return ResultSet
-     * @throws InvalidStateException
      */
     private function applyPaging(int $offset, int $limit): ResultSet
     {
@@ -112,7 +112,7 @@ class ResultSet implements \Countable, \IteratorAggregate
         if ($this->query->getMaxResults() > 0 || $this->query->getFirstResult() > 0) {
             $this->iterator = $this->createPaginatedQuery($this->query)->getIterator();
         } else {
-            $this->iterator = new \ArrayIterator($this->query->getResult());
+            $this->iterator = new ArrayIterator($this->query->getResult());
         }
 
         if ($this->queryObject !== NULL && $this->repository !== NULL) {

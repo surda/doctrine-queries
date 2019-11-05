@@ -12,9 +12,9 @@ class QueryException extends RuntimeException
     public $query;
 
     /**
-     * @param Throwable          $previous
+     * @param Throwable              $previous
      * @param ORM\AbstractQuery|NULL $query
-     * @param string|NULL        $message
+     * @param string|NULL            $message
      */
     public function __construct(Throwable $previous, ?ORM\AbstractQuery $query = NULL, ?string $message = NULL)
     {
