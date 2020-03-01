@@ -4,9 +4,8 @@ namespace Surda\Doctrine\Queries;
 
 use Doctrine\ORM;
 use Exception;
-use Surda\Doctrine\Queries\Exception\QueryException;
 
-class EntityRepository extends ORM\EntityRepository implements IQueryable
+class QueryableRepository extends ORM\EntityRepository implements IQueryable
 {
     /**
      * @param string|NULL $dql
