@@ -18,6 +18,17 @@ composer require surda/doctrine-queries
 ```
 ## Usage
 
+### Entity repository
+
+```php
+use Surda\Doctrine\Queries\QueryableRepository;
+
+class UserRepository extends QueryableRepository
+{
+   // ...
+}
+```
+
 ### QueryObject
 
 ```php
@@ -178,6 +189,8 @@ class Repository extends \Surda\Doctrine\Queries\EntityRepository
     }
 }
 ```
+
+### Presenter
 
 ```php
 $visualPaginator = $this['vp'];
