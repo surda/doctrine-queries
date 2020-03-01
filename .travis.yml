@@ -14,7 +14,7 @@ install:
     - travis_retry composer install --no-progress --prefer-dist
 
 script:
-    - composer run-script phpstan
+    # - composer run-script phpstan
     - composer run-script tests
 
 after_failure:
