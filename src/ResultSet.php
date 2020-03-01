@@ -9,7 +9,6 @@ use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 use IteratorAggregate;
 use Nette\SmartObject;
 use Nette\Utils\Paginator as NettePaginator;
-use Surda\Doctrine\Queries\Exception\QueryException;
 
 class ResultSet implements Countable, IteratorAggregate
 {

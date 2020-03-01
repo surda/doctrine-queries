@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Surda\Doctrine\Queries\Exception;
+namespace Surda\Doctrine\Queries;
 
 use Doctrine\ORM;
 use RuntimeException;
@@ -18,7 +18,7 @@ class QueryException extends RuntimeException
      */
     public function __construct(Throwable $previous, ?ORM\AbstractQuery $query = NULL, ?string $message = NULL)
     {
-        parent::__construct($message ?: $previous->getMessage(), 0, $previous);
+        parent::__construct($message !== NULL ? $message : $previous->getMessage(), 0, $previous);
         $this->query = $query;
     }
 }
